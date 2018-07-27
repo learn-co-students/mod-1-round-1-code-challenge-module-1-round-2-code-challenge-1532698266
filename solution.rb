@@ -14,15 +14,12 @@ class Author
   end
 
   def articles
-    Article.all.select do |article|
-      article.author == self
-    end
+    #helper method
+    Article.all.select {|article| article.author == self}
   end
 
   def magazines
-    articles.map do |article|
-      article.magazine
-    end
+    articles.map {|article| article.magazine}
   end
 
   def add_article(title, magazine)
@@ -30,9 +27,7 @@ class Author
   end
 
   def find_specialties
-    magazines.map do |magazine|
-      magazine.category
-    end
+    magazines.map {|magazine| magazine.category}
   end
 end
 
@@ -53,31 +48,18 @@ class Magazine
   end
 
   def articles
-    Article.all.select do |article|
-      article.magazine == self
-    end
-  end
-
-  def authors
-    articles.map do |article|
-      article.author
-    end
+    Article.all.select {|article| article.magazine == self}
   end
 
   def self.find_by_name(name)
-    self.all.find do |magazine|
-      magazine.name == name
-    end
+    self.all.find {|magazine| magazine.name == name}
   end
 
   def article_titles
-    articles.map do |article|
-      article.title
-    end
+    articles.map {|article| article.title}
   end
 end
-
-#######################################
+######################################
 class Article
   attr_accessor :author, :magazine, :title
 
@@ -93,5 +75,4 @@ class Article
   def self.all
     @@all
   end
-
 end

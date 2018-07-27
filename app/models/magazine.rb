@@ -1,5 +1,4 @@
 class Magazine
-
   attr_accessor :name, :category
 
   @@all = []
@@ -15,27 +14,15 @@ class Magazine
   end
 
   def articles
-    Article.all.select do |article|
-      article.magazine == self
-    end
-  end
-
-  def authors
-    articles.map do |article|
-      article.author
-    end
+    #helper method
+    Article.all.select {|article| article.magazine == self}
   end
 
   def self.find_by_name(name)
-    self.all.find do |magazine|
-      magazine.name == name
-    end
+    self.all.find {|magazine| magazine.name == name}
   end
 
   def article_titles
-    articles.map do |article|
-      article.title
-    end
+    articles.map {|article| article.title}
   end
-
 end

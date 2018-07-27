@@ -1,5 +1,4 @@
 class Author
-
   attr_accessor :name
 
   @@all = []
@@ -14,15 +13,11 @@ class Author
   end
 
   def articles
-    Article.all.select do |article|
-      article.author == self
-    end
+    Article.all.select {|article| article.author == self}
   end
 
   def magazines
-    articles.map do |article|
-      article.magazine
-    end
+    articles.map {|article| article.magazine}
   end
 
   def add_article(title, magazine)
@@ -30,9 +25,6 @@ class Author
   end
 
   def find_specialties
-    magazines.map do |magazine|
-      magazine.category
-    end
+    magazines.map {|magazine| magazine.category}
   end
-
 end

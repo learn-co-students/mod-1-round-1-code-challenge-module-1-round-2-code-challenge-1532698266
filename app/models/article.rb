@@ -1,5 +1,4 @@
 class Article
-
   attr_accessor :author, :magazine, :title
 
   @@all = []
@@ -14,5 +13,4 @@ class Article
   def self.all
     @@all
   end
-
 end
